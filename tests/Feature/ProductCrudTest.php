@@ -12,7 +12,7 @@ beforeEach(function () {
     // Fake queue to prevent real job dispatch
     Queue::fake();
 
-    // Mock Elasticsearch — no real ES needed for CRUD tests
+    // Mock Elasticsearch: no real ES needed for CRUD tests
     $this->mock(ElasticSearchService::class)->shouldIgnoreMissing();
 
     // Mock CacheService to use array driver behaviour

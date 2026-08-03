@@ -209,7 +209,7 @@ app/
 
 ## 🧪 Testes
 
-Os testes usam **SQLite em memória** para velocidade e isolamento. Elasticsearch e Cache são mockados nos feature tests — o runtime usa MySQL e Redis reais.
+Os testes usam **SQLite em memória** para velocidade e isolamento. Elasticsearch e Cache são mockados nos feature tests. O runtime usa MySQL e Redis reais.
 
 ```bash
 # Todos os testes
@@ -244,8 +244,8 @@ CACHE_DRIVER=redis
 ```
 
 Cache é aplicado em:
-- `GET /products/{id}` — chave `product:{id}`
-- `GET /search/products` — chave `search:products:{md5(params)}`
+- `GET /products/{id}`: chave `product:{id}`
+- `GET /search/products`: chave `search:products:{md5(params)}`
 
 Invalidado automaticamente em `update` e `delete`.
 **Skipado** quando `page > 50` para evitar pressão de memória.
@@ -315,7 +315,7 @@ docker compose exec app ./vendor/bin/pint --test
 
 - Upload de imagem requer LocalStack rodando e bucket criado
 - Elasticsearch pode levar 30-60s para inicializar no primeiro `docker compose up`
-- `CacheService::invalidateSearch` usa Redis SCAN — em clusters Redis, pode precisar de ajuste
+- `CacheService::invalidateSearch` usa Redis SCAN. Em clusters Redis, pode precisar de ajuste
 - Não há autenticação implementada (pode ser adicionado com Laravel Sanctum)
 
 ## 🔮 Próximos Passos

@@ -44,7 +44,7 @@ class CacheService
 
     public function invalidateSearch(): void
     {
-        // Flush keys matching pattern — using Redis SCAN
+        // Flush keys matching pattern: using Redis SCAN
         try {
             $redis = Cache::getStore()->getRedis();
             $prefix = Cache::getStore()->getPrefix();

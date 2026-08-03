@@ -22,12 +22,12 @@ describe('Cache behaviour', function () {
         $product  = Product::factory()->create();
         $cacheKey = "product:{$product->id}";
 
-        // First request — cache MISS
+        // First request: cache MISS
         expect(Cache::has($cacheKey))->toBeFalse();
 
         $this->getJson("/api/v1/products/{$product->id}")->assertOk();
 
-        // Second request — cache HIT
+        // Second request: cache HIT
         expect(Cache::has($cacheKey))->toBeTrue();
 
         $cached = Cache::get($cacheKey);
